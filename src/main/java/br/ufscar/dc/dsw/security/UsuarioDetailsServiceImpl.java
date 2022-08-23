@@ -19,7 +19,7 @@ public class UsuarioDetailsServiceImpl implements UserDetailsService {
         Usuario user = dao.getUserByUsername(username);
          
         if (user == null) {
-            throw new UsernameNotFoundException("Could not find user");
+            throw new UsernameNotFoundException("Usuário não encontrado...");
         }
          
         return new UsuarioDetails(user);
