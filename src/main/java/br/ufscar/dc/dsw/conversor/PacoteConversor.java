@@ -4,17 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import br.ufscar.dc.dsw.domain.Editora;
-import br.ufscar.dc.dsw.service.spec.IEditoraService;
+import br.ufscar.dc.dsw.domain.Pacote;
+import br.ufscar.dc.dsw.service.spec.ILivroService;
 
 @Component
-public class EditoraConversor implements Converter<String, Editora>{
+public class PacoteConversor implements Converter<String, Pacote>{
 
 	@Autowired
-	private IEditoraService service;
+	private IPacoteService service;
 	
 	@Override
-	public Editora convert(String text) {
+	public Pacote convert(String text) {
 		
 		if (text.isEmpty()) {
 		 return null;	

@@ -11,8 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import br.ufscar.dc.dsw.dao.IEditoraDAO;
 import br.ufscar.dc.dsw.dao.ILivroDAO;
 import br.ufscar.dc.dsw.dao.IUsuarioDAO;
-import br.ufscar.dc.dsw.domain.Editora;
-import br.ufscar.dc.dsw.domain.Livro;
+import br.ufscar.dc.dsw.domain.Agencia;
+import br.ufscar.dc.dsw.domain.Pacote;
 import br.ufscar.dc.dsw.domain.Usuario;
 
 @SpringBootApplication
@@ -53,22 +53,22 @@ public class LivrariaMvcApplication {
 			u3.setEnabled(true);
 			usuarioDAO.save(u3);
 			
-			Editora e1 = new Editora();
+			Agencia e1 = new Agencia();
 			e1.setCNPJ("55.789.390/0008-99");
 			e1.setNome("Companhia das Letras");
 			editoraDAO.save(e1);
 			
-			Editora e2 = new Editora();
+			Agencia e2 = new Agencia();
 			e2.setCNPJ("71.150.470/0001-40");
 			e2.setNome("Record");
 			editoraDAO.save(e2);
 			
-			Editora e3 = new Editora();
+			Agencia e3 = new Agencia();
 			e3.setCNPJ("32.106.536/0001-82");
 			e3.setNome("Objetiva");
 			editoraDAO.save(e3);
 			
-			Livro l1 = new Livro();
+			Pacote l1 = new Pacote();
 			l1.setTitulo("Ensaio sobre a Cegueira");
 			l1.setAutor("José Saramago");
 			l1.setAno(1995);
@@ -76,7 +76,7 @@ public class LivrariaMvcApplication {
 			l1.setEditora(e1);
 			livroDAO.save(l1);
 			
-			Livro l2 = new Livro();
+			Pacote l2 = new Pacote();
 			l2.setTitulo("Cem anos de Solidão");
 			l2.setAutor("Gabriel Garcia Márquez");
 			l2.setAno(1977);
@@ -84,7 +84,7 @@ public class LivrariaMvcApplication {
 			l2.setEditora(e2);
 			livroDAO.save(l2);
 			
-			Livro l3 = new Livro();
+			Pacote l3 = new Pacote();
 			l3.setTitulo("Diálogos Impossíveis");
 			l3.setAutor("Luis Fernando Verissimo");
 			l3.setAno(2012);

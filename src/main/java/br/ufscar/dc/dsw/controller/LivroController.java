@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.ufscar.dc.dsw.domain.Editora;
-import br.ufscar.dc.dsw.domain.Livro;
+import br.ufscar.dc.dsw.domain.Agencia;
+import br.ufscar.dc.dsw.domain.Pacote;
 import br.ufscar.dc.dsw.service.spec.IEditoraService;
 import br.ufscar.dc.dsw.service.spec.ILivroService;
 
@@ -31,7 +31,7 @@ public class LivroController {
 	private IEditoraService editoraService;
 
 	@GetMapping("/cadastrar")
-	public String cadastrar(Livro livro) {
+	public String cadastrar(Pacote livro) {
 		return "livro/cadastro";
 	}
 
@@ -42,7 +42,7 @@ public class LivroController {
 	}
 
 	@PostMapping("/salvar")
-	public String salvar(@Valid Livro livro, BindingResult result, RedirectAttributes attr) {
+	public String salvar(@Valid Pacote livro, BindingResult result, RedirectAttributes attr) {
 
 		if (result.hasErrors()) {
 			return "livro/cadastro";
@@ -60,7 +60,7 @@ public class LivroController {
 	}
 
 	@PostMapping("/editar")
-	public String editar(@Valid Livro livro, BindingResult result, RedirectAttributes attr) {
+	public String editar(@Valid Pacote livro, BindingResult result, RedirectAttributes attr) {
 
 		if (result.hasErrors()) {
 			return "livro/cadastro";
@@ -79,7 +79,7 @@ public class LivroController {
 	}
 
 	@ModelAttribute("editoras")
-	public List<Editora> listaEditoras() {
+	public List<Agencia> listaEditoras() {
 		return editoraService.buscarTodos();
 	}
 }

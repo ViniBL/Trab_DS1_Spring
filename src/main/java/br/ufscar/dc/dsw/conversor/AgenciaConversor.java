@@ -4,17 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import br.ufscar.dc.dsw.domain.Livro;
-import br.ufscar.dc.dsw.service.spec.ILivroService;
+import br.ufscar.dc.dsw.domain.Agencia;
+import br.ufscar.dc.dsw.service.spec.IEditoraService;
 
 @Component
-public class LivroConversor implements Converter<String, Livro>{
+public class EditoraConversor implements Converter<String, Agencia>{
 
 	@Autowired
-	private ILivroService service;
+	private IEditoraService service;
 	
 	@Override
-	public Livro convert(String text) {
+	public Agencia convert(String text) {
 		
 		if (text.isEmpty()) {
 		 return null;	
