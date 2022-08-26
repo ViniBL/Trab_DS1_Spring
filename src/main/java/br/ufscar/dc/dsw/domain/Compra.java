@@ -25,7 +25,7 @@ public class Compra extends AbstractEntity<Long> {
 	@NotNull(message = "{NotNull.compra.livro}")
 	@ManyToOne
 	@JoinColumn(name = "livro_id")
-	private Pacote livro;
+	private Livro livro;
 
 	@NotNull
 	@ManyToOne
@@ -48,11 +48,11 @@ public class Compra extends AbstractEntity<Long> {
 		this.valor = valor;
 	}
 
-	public Pacote getLivro() {
+	public Livro getLivro() {
 		return livro;
 	}
 
-	public void setLivro(Pacote livro) {
+	public void setLivro(Livro livro) {
 		this.livro = livro;
 		setValor(livro.getPreco());
 	}

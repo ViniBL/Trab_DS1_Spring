@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.ufscar.dc.dsw.dao.IEditoraDAO;
-import br.ufscar.dc.dsw.domain.Agencia;
+import br.ufscar.dc.dsw.domain.Editora;
 
 @Component
 public class UniqueCNPJValidator implements ConstraintValidator<UniqueCNPJ, String> {
@@ -18,7 +18,7 @@ public class UniqueCNPJValidator implements ConstraintValidator<UniqueCNPJ, Stri
 	@Override
 	public boolean isValid(String CNPJ, ConstraintValidatorContext context) {
 		if (dao != null) {
-			Agencia editora = dao.findByCNPJ(CNPJ);
+			Editora editora = dao.findByCNPJ(CNPJ);
 			return editora == null;
 		} else {
 			// Durante a execução da classe LivrariaMvcApplication

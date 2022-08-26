@@ -6,19 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.ufscar.dc.dsw.dao.IPacoteDAO;
-import br.ufscar.dc.dsw.domain.Pacote;
-import br.ufscar.dc.dsw.service.spec.IPacoteService;
+import br.ufscar.dc.dsw.dao.IEditoraDAO;
+import br.ufscar.dc.dsw.domain.Editora;
+import br.ufscar.dc.dsw.service.spec.IEditoraService;
 
 @Service
 @Transactional(readOnly = false)
-public class PacoteService implements IPacoteService {
+public class EditoraService implements IEditoraService {
 
 	@Autowired
-	IPacoteDAO dao;
+	IEditoraDAO dao;
 	
-	public void salvar(Pacote pacote) {
-		dao.save(pacote);
+	public void salvar(Editora editora) {
+		dao.save(editora);
 	}
 
 	public void excluir(Long id) {
@@ -26,12 +26,17 @@ public class PacoteService implements IPacoteService {
 	}
 
 	@Transactional(readOnly = true)
-	public Pacote buscarPorId(Long id) {
+	public Editora buscarPorId(Long id) {
 		return dao.findById(id.longValue());
 	}
 
 	@Transactional(readOnly = true)
-	public List<Pacote> buscarTodos() {
+	public List<Editora> buscarTodos() {
 		return dao.findAll();
+	}
+	
+	@Transactional(readOnly = true)
+	public boolean editoraTemLivros(Long id) {
+		return !dao.findById(id.longValue()).getLivros().isEmpty(); 
 	}
 }
