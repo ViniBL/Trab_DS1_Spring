@@ -3,9 +3,6 @@ package br.ufscar.dc.dsw.domain;
 import java.util.List;
 
 import lombok.*;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Column;
 import javax.persistence.Entity;
