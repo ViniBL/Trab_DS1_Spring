@@ -11,34 +11,23 @@ import javax.validation.constraints.NotNull;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "Compra")
-public class Compra extends AbstractEntity<Long> {
-
-	@NotNull
-	@Column(nullable = false, length = 19)
-	private String data;
+@Table(name = "Pacotes_adquiridos")
+public class Pacote_adquirido extends AbstractEntity<Long> {
     
 	@NotNull
 	@Column(columnDefinition = "DECIMAL(8,2) DEFAULT 0.0")
 	private BigDecimal valor;
     
-	@NotNull(message = "{NotNull.compra.livro}")
+	@NotNull(message = "{NotNull.pacote_adquirido.pacote}")
 	@ManyToOne
-	@JoinColumn(name = "livro_id")
-	private Livro livro;
+	@JoinColumn(name = "pacote_id")
+	private Pacote pacote;
 
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 
-	public String getData() {
-		return data;
-	}
-
-	public void setData(String data) {
-		this.data = data;
-	}
 
 	public BigDecimal getValor() {
 		return valor;
@@ -48,13 +37,13 @@ public class Compra extends AbstractEntity<Long> {
 		this.valor = valor;
 	}
 
-	public Livro getLivro() {
+	public Livro getPacote() {
 		return livro;
 	}
 
-	public void setLivro(Livro livro) {
-		this.livro = livro;
-		setValor(livro.getPreco());
+	public void setPacote(Livro pacote) {
+		this.livro = pacote;
+		setValor(pacote.getValor());
 	}
 
 	public Usuario getUsuario() {
