@@ -40,7 +40,18 @@ public class Pacote extends AbstractEntity<Long> {
 	@JoinColumn(name = "agencia_id")
 	@Getter @Setter private Agencia agencia;
 
-	@ManyToOne
-	@JoinColumn(name = "destino_id")
-	@Getter @Setter private Destino destino;
+	@NotBlank(message = "{NotBlank.destino.cidade}")
+	@Size(max = 60)
+	@Column(nullable = false, length = 60)
+	@Getter @Setter private String cidade;
+
+	@NotBlank(message = "{NotBlank.destino.estado}")
+	@Size(max = 60)
+	@Column(nullable = false, length = 60)
+	@Getter @Setter private String estado;
+
+	@NotBlank(message = "{NotBlank.destino.pais}")
+	@Size(max = 60)
+	@Column(nullable = false, length = 60)
+	@Getter @Setter private String pais;
 }

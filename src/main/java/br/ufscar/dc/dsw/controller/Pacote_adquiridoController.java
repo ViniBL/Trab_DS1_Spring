@@ -17,28 +17,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.ufscar.dc.dsw.domain.Compra;
+import br.ufscar.dc.dsw.domain.Pacote_adquirido;
 import br.ufscar.dc.dsw.domain.Livro;
 import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.security.UsuarioDetails;
 import br.ufscar.dc.dsw.service.spec.ICompraService;
-import br.ufscar.dc.dsw.service.spec.ILivroService;
+import br.ufscar.dc.dsw.service.spec.IPacoteService;
 
 @Controller
 @RequestMapping("/compras")
-public class CompraController {
+public class Pacote_adquiridoController {
 	
 	@Autowired
-	private ICompraService service;
+	private IPacote_adquiridoService service;
 	
 	@Autowired
-	private ILivroService livroService;
+	private IPacoteService pacoteService;
 	
 	@GetMapping("/cadastrar")
-	public String cadastrar(Compra compra) {
-		String data = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
+	public String cadastrar(Pacote_adquirido compra) {
 		compra.setUsuario(this.getUsuario());
-		compra.setData(data);
 		return "compra/cadastro";
 	}
 	
@@ -67,8 +65,8 @@ public class CompraController {
 		return "redirect:/compras/listar";
 	}
 	
-	@ModelAttribute("livros")
-	public List<Livro> listaLivros() {
-		return livroService.buscarTodos();
+	@ModelAttribute("pacotes")
+	public List<Pacote> listaPacotes() {
+		return pacoteService.buscarTodos();
 	}
 }
