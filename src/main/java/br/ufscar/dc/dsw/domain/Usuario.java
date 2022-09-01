@@ -4,81 +4,63 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import lombok.*;
+import java.util.Date;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Usuario")
+@Check(constraints = "sexo IN('M', 'F', 'N')")
+@Check(constraints = "role IN('ADM', 'USER', 'AGENCIA')")
+@NoArgsConstructor @AllArgsConstructor 
 public class Usuario extends AbstractEntity<Long> {
   
+	//Atributos comuns a todos os usuarios
 	@NotBlank
     @Column(nullable = false, length = 20, unique = true)
-    private String username;
+    @Getter @Setter private String login;
     
 	@NotBlank
     @Column(nullable = false, length = 64)
-    private String password;
+    @Getter @Setter private String senha;
        
     @NotBlank
     @Column(nullable = false, length = 60)
-    private String name;
-    
-    @NotBlank
-    @Column(nullable = false, length = 14)
-    private String CPF;
-    
-    @NotBlank
+    @Getter @Setter private String nome;
+
+	@NotBlank
     @Column(nullable = false, length = 10)
-    private String role;
-    
-    @Column(nullable = false)
-    private boolean enabled;
+    @Getter @Setter private String role;
+
+
+    //Atributos para cliente
+	@UniqueCNPJ (message = "{Unique.usuario.CNPJ}")
+    @NotBlank
+    @Column(nullable = true, length = 14, unique = true)
+    @Getter @Setter private String CPF;
+
+	@NotBlank
+    @Column(nullable = true, length = 14)
+    @Getter @Setter private String telefone;
+
+	@NotBlank
+    @Column(nullable = true, length = 1)
+    @Getter @Setter private String sexo;
+
+	@NotBlank
+    @Column(nullable = true, length = 10)
+    @Getter @Setter private Date dataNascimento;
+
+
+	//Atributos para agencia
+	@UniqueCNPJ (message = "{Unique.usuario.CNPJ}")
+	@Size(min = 18, max = 18, message = "{Size.usuario.CNPJ}")
+	@Column(nullable = true, unique = true, length = 60)
+	@Getter @Setter private String CNPJ;
+
+	@Size(min = 0, max = 256)
+	@Column(nullable = true, unique = false, length = 256)
+	@Getter @Setter private String descricao;
 		
-	public String getUsername() {
-		return username;
-	}
 	
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
-	public String getPassword() {
-		return password;
-	}
-	
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	
-	public String getCPF() {
-		return CPF;
-	}
-
-	public void setCPF(String cPF) {
-		CPF = cPF;
-	}
-
-	public String getRole() {
-		return role;
-	}
-	
-	public void setRole(String role) {
-		this.role = role;
-	}
-	
-	public boolean isEnabled() {
-		return enabled;
-	}
-	
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
 }
