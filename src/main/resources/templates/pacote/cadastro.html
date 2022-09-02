@@ -30,13 +30,13 @@
 
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label th:text="#{pacote.titulo.label}" for="nome"></label> 
-						<input type="text" class="form-control" id="nome" placeholder="Título"
-							autofocus="autofocus" th:field="*{titulo}"
-							th:classappend="${#fields.hasErrors('titulo')} ? is-invalid" />
+						<label th:text="#{pacote.descricao.label}" for="descricao"></label> 
+						<input type="text" class="form-control" id="descricao" placeholder="descricao"
+							autofocus="autofocus" th:field="*{descricao}"
+							th:classappend="${#fields.hasErrors('descricao')} ? is-invalid" />
 						
 						<div class="invalid-feedback">
-							<span th:errors="*{titulo}"></span>
+							<span th:errors="*{descricao}"></span>
 						</div>
 					</div>
 
@@ -58,7 +58,7 @@
 
 					<div class="form-group col-md-6">
 						<label th:text="#{pacote.data_partida.label}" for="data_partida"></label> 
-						<input type="number" class="form-control" id="data_partida" placeholder="Data de partida"
+						<input type="text" class="form-control" id="data_partida" placeholder="Data de partida"
 							autofocus="autofocus" th:field="*{data_partida}"
 							th:classappend="${#fields.hasErrors('data_partida')} ? is-invalid" />
 						
@@ -70,7 +70,7 @@
 					<div class="form-group col-md-6">
 						<label th:text="#{pacote.duracao.label}" for="duracao"></label> 
 						<input type="text" class="form-control" id="duracao" placeholder="Duração"
-							data-mask="000000,00" data-mask-reverse="true" th:field="*{duracao}" 
+							autofocus="autofocus" th:field="*{duracao}" 
 							th:classappend="${#fields.hasErrors('duracao')} ? is-invalid" />
 						
 						<div class="invalid-feedback">
@@ -92,20 +92,9 @@
 			</div>
 
 			<div class="form-group col-md-6">
-				<label th:text="#{pacote.descricao.label}" for="descricao"></label> 
-				<input type="text" class="form-control" id="descricao" placeholder="Descrição"
-					data-mask="000000,00" data-mask-reverse="true" th:field="*{descricao}" 
-					th:classappend="${#fields.hasErrors('descricao')} ? is-invalid" />
-				
-				<div class="invalid-feedback">
-					<span th:errors="*{descricao}"></span>
-				</div>
-			</div>
-
-			<div class="form-group col-md-6">
 				<label th:text="#{destino.cidade.label}" for="cidade"></label> 
 				<input type="text" class="form-control" id="cidade" placeholder="Cidade"
-					data-mask="000000,00" data-mask-reverse="true" th:field="*{cidade}" 
+					autofocus="autofocus" th:field="*{cidade}" 
 					th:classappend="${#fields.hasErrors('cidade')} ? is-invalid" />
 				
 				<div class="invalid-feedback">
@@ -116,7 +105,7 @@
 			<div class="form-group col-md-6">
 				<label th:text="#{destino.estado.label}" for="descricao"></label> 
 				<input type="text" class="form-control" id="estado" placeholder="Estado"
-					data-mask="000000,00" data-mask-reverse="true" th:field="*{estado}" 
+					autofocus="autofocus" th:field="*{estado}" 
 					th:classappend="${#fields.hasErrors('estado')} ? is-invalid" />
 				
 				<div class="invalid-feedback">
@@ -127,7 +116,7 @@
 			<div class="form-group col-md-6">
 				<label th:text="#{destino.pais.label}" for="pais"></label> 
 				<input type="text" class="form-control" id="pais" placeholder="Pais"
-					data-mask="000000,00" data-mask-reverse="true" th:field="*{pais}" 
+					autofocus="autofocus" th:field="*{pais}" 
 					th:classappend="${#fields.hasErrors('pais')} ? is-invalid" />
 				
 				<div class="invalid-feedback">
