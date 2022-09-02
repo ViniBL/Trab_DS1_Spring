@@ -4,65 +4,134 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import lombok.*;
-import java.util.Date;
+//import lombok.*;
+//import java.util.Date;
 import br.ufscar.dc.dsw.validation.UniqueCPF;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Usuario")
-@NoArgsConstructor @AllArgsConstructor 
+//@NoArgsConstructor @AllArgsConstructor 
 public class Usuario extends AbstractEntity<Long> {
   
 	//Atributos comuns a todos os usuarios
 	@NotBlank
     @Column(nullable = false, length = 20, unique = true)
-    @Getter @Setter private String username;
+    //@Getter @Setter 
+    private String username;
     
 	@NotBlank
     @Column(nullable = false, length = 64)
-    @Getter @Setter private String password;
+    //@Getter @Setter 
+    private String password;
        
     @NotBlank
     @Column(nullable = false, length = 60)
-    @Getter @Setter private String nome;
+    //@Getter @Setter 
+    private String nome;
 
 	@NotBlank
     @Column(nullable = false, length = 10)
-    @Getter @Setter private String role;
+    //@Getter @Setter 
+    private String role;
 
     @Column(nullable = false)
-    @Getter @Setter private boolean enabled;
+    //@Getter @Setter 
+    private boolean enabled;
 
 
     //Atributos para cliente
 	@UniqueCPF (message = "{Unique.usuario.CPF}")
     @NotBlank
     @Column(nullable = true, length = 14, unique = true)
-    @Getter @Setter private String CPF;
+    //@Getter @Setter 
+    private String CPF;
 
 	@NotBlank
     @Column(nullable = true, length = 14)
-    @Getter @Setter private String telefone;
+    //@Getter @Setter 
+    private String telefone;
 
 	@NotBlank
     @Column(nullable = true, length = 1)
-    @Getter @Setter private String sexo;
+    //@Getter @Setter 
+    private String sexo;
 
-	@NotBlank
-    @Column(nullable = true, length = 10)
-    @Getter @Setter private Date dataNascimento;
+	
+    @Column(nullable = true)
+    //@Getter @Setter 
+    private String dataNascimento;
 
-/*
-	//Atributos para agencia
-	@UniqueCNPJ (message = "{Unique.usuario.CNPJ}")
-	@Size(min = 18, max = 18, message = "{Size.usuario.CNPJ}")
-	@Column(nullable = true, unique = true, length = 60)
-	@Getter @Setter private String CNPJ;
+    public String getUsername() {
+        return username;
+    }
 
-	@Size(min = 0, max = 256)
-	@Column(nullable = true, unique = false, length = 256)
-	@Getter @Setter private String descricao;
-		
-	*/
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String cPF) {
+        CPF = cPF;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
 }

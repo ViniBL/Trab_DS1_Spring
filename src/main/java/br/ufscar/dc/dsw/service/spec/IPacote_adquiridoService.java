@@ -12,4 +12,6 @@ public interface IPacote_adquiridoService {
 	List<Pacote_adquirido> buscarTodosPorUsuario(Usuario u);
 	
 	void salvar(Pacote_adquirido pa);
+
+	boolean cancelarPacote(Pacote_adquirido pa);
 }

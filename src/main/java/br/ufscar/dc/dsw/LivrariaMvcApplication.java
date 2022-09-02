@@ -1,8 +1,8 @@
 package br.ufscar.dc.dsw;
 
 import java.math.BigDecimal;
-import java.util.Date;
-import java.text.SimpleDateFormat;
+//import java.util.Date;
+//import java.text.SimpleDateFormat;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -27,8 +27,6 @@ public class LivrariaMvcApplication {
 	@Bean
 	public CommandLineRunner demo(IUsuarioDAO usuarioDAO, BCryptPasswordEncoder encoder, IAgenciaDAO agenciaDAO, IPacoteDAO pacoteDAO) {
 		return (args) -> {
-			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-			Date data = formato.parse(10/02/1999); 
 			
 			Usuario u1 = new Usuario();
 			u1.setUsername("admin");
@@ -37,6 +35,9 @@ public class LivrariaMvcApplication {
 			u1.setNome("Administrador");
 			u1.setRole("ROLE_ADMIN");
 			u1.setEnabled(true);
+			u1.setTelefone("31-99990-9092");
+			u1.setSexo("M");
+			u1.setDataNascimento("24/03/1999");
 			usuarioDAO.save(u1);
 			
 			Usuario u2 = new Usuario();
@@ -48,7 +49,8 @@ public class LivrariaMvcApplication {
 			u2.setEnabled(true);
 			u2.setTelefone("31-99990-9090");
 			u2.setSexo("M");
-			u2.setDataNascimento(data);
+		
+			u2.setDataNascimento("28/05/1996");
 			usuarioDAO.save(u2);
 			
 			Usuario u3 = new Usuario();
@@ -56,11 +58,11 @@ public class LivrariaMvcApplication {
 			u3.setPassword(encoder.encode("123"));
 			u3.setCPF("367.318.380-04");
 			u3.setNome("Fulana Silva");
-			u3.setRole("ROLE_AGENCIA");
+			u3.setRole("ROLE_USER");
 			u3.setTelefone("31-99990-9091");
 			u3.setSexo("F");
-			data = formato.parse(17/12/1993); 
-			u3.setDataNascimento(data);
+			
+			u3.setDataNascimento("17/12/1993");
 			u3.setEnabled(true);
 			usuarioDAO.save(u3);
 			
@@ -90,8 +92,8 @@ public class LivrariaMvcApplication {
 			l1.setDuracao(2);
 			l1.setValor(BigDecimal.valueOf(1300.9));
 			l1.setAgencia(e1);
-			data = formato.parse(17/12/2022); 
-			l1.setData_partida(data);
+
+			l1.setData_partida("17/12/2022");
 			pacoteDAO.save(l1);
 			
 			Pacote l2 = new Pacote();
@@ -102,8 +104,8 @@ public class LivrariaMvcApplication {
 			l2.setDuracao(6);
 			l2.setValor(BigDecimal.valueOf(45.4));
 			l2.setAgencia(e2);
-			data = formato.parse(17/12/2022); 
-			l2.setData_partida(data);
+		
+			l2.setData_partida("17/12/2022");
 			pacoteDAO.save(l2);
 			
 			Pacote l3 = new Pacote();
@@ -114,8 +116,8 @@ public class LivrariaMvcApplication {
 			l3.setDuracao(2);
 			l3.setValor(BigDecimal.valueOf(10.0));
 			l3.setAgencia(e3);
-			data = formato.parse(17/12/2022); 
-			l3.setData_partida(data);
+			
+			l3.setData_partida("17/12/2022");
 			pacoteDAO.save(l3);
 		};
 	}

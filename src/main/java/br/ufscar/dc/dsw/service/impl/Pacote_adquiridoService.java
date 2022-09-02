@@ -1,6 +1,8 @@
 package br.ufscar.dc.dsw.service.impl;
 
 import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,20 @@ public class Pacote_adquiridoService implements IPacote_adquiridoService {
 	
 	public void salvar(Pacote_adquirido compra) {
 		dao.save(compra);
+	}
+
+	public boolean cancelarPacote(Pacote_adquirido pa){
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String dataPartida = pa.getPacote().getData_partida();
+		LocalDate dataAtual = LocalDate.now();
+		LocalDate dp = LocalDate.parse(dataPartida, formatter);
+		dp = dp.plusDays(5);
+		if(dp.isAfter(dataAtual)){
+			return false;
+		 }else{
+			dao.cancelaPacote(pa.getId());
+			return true;
+		 }
 	}
 
 	@Transactional(readOnly = true)

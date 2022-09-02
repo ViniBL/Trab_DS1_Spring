@@ -8,32 +8,54 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import lombok.*;
-import javax.validation.constraints.NotBlank;
+//import lombok.*;
+//import javax.validation.constraints.NotBlank;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Pacote_adquirido")
-@NoArgsConstructor @AllArgsConstructor 
+//@NoArgsConstructor @AllArgsConstructor 
 public class Pacote_adquirido extends AbstractEntity<Long> {
-    /*
-	@NotNull
-	@Column(columnDefinition = "DECIMAL(8,2) DEFAULT 0.0")
-	@Getter @Setter private BigDecimal valor;
-	*/
 
-	@NotBlank
+	@NotNull
     @Column(nullable = false, length = 10)
-    @Getter @Setter private String status;
+    //@Getter @Setter 
+	private String status;
     
 	@NotNull(message = "{NotNull.pacote_adquirido.pacote}")
 	@ManyToOne
 	@JoinColumn(name = "pacote_id")
-	@Getter @Setter private Pacote pacote;
+	//@Getter @Setter 
+	private Pacote pacote;
 
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
-	@Getter @Setter private Usuario usuario;
+	//@Getter @Setter 
+	private Usuario usuario;
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Pacote getPacote() {
+		return pacote;
+	}
+
+	public void setPacote(Pacote pacote) {
+		this.pacote = pacote;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 }

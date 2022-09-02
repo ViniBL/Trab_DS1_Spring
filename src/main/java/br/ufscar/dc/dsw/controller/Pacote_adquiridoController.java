@@ -35,8 +35,8 @@ public class Pacote_adquiridoController {
 	private IPacoteService pacoteService;
 	
 	@GetMapping("/cadastrar")
-	public String cadastrar(Pacote_adquirido compra) {
-		compra.setUsuario(this.getUsuario());
+	public String cadastrar(Pacote_adquirido pacote_adquirido) {
+		pacote_adquirido.setUsuario(this.getUsuario());
 		return "compra/cadastro";
 	}
 	
@@ -48,20 +48,30 @@ public class Pacote_adquiridoController {
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
 					
-		model.addAttribute("compras",service.buscarTodosPorUsuario(this.getUsuario()));
+		model.addAttribute("pacotes_adquiridos",service.buscarTodosPorUsuario(this.getUsuario()));
 		
 		return "compra/lista";
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(@Valid Pacote_adquirido compra, BindingResult result, RedirectAttributes attr) {
+	public String salvar(@Valid Pacote_adquirido pacote_adquirido, BindingResult result, RedirectAttributes attr) {
 		
 		if (result.hasErrors()) {
 			return "compra/cadastro";
 		}
 		
-		service.salvar(compra);
+		service.salvar(pacote_adquirido);
 		attr.addFlashAttribute("sucess", "Compra inserida com sucesso.");
+		return "redirect:/compras/listar";
+	}
+
+	@PostMapping("/cancelar")
+	public String cancelar(@Valid Pacote_adquirido pacote_adquirido, RedirectAttributes attr){
+		if(service.cancelarPacote(pacote_adquirido)){
+			attr.addFlashAttribute("sucess", "Cancelamento realizado com sucesso.");
+			return "redirect:/compras/listar";
+		}
+		attr.addFlashAttribute("fail", "Cancelamento não realizado! O limite para cancelamento do pacote é de 5 dias de antecedência. Você já ultrapassou esse limite.");
 		return "redirect:/compras/listar";
 	}
 	

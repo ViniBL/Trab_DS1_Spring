@@ -42,7 +42,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="pacote_adquirido : ${pacote_adquirido}">
+						<tr th:each="pacote_adquirido : ${pacotes_adquiridos}">
 							<td th:text="${pacote_adquirido.id}"></td>
 							<td th:text="${pacote_adquirido.status}"></td>
 							<td th:text="${pacote_adquirido.pacote.agenica.nome}"></td>

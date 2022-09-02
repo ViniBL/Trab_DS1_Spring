@@ -21,6 +21,6 @@ public interface IUsuarioDAO extends CrudRepository<Usuario, Long> {
 
 	void deleteById(Long id);
 	
-    @Query("SELECT u FROM Usuario u WHERE u.login = :login")
-    public Usuario getUserByUsername(@Param("login") String login);
+    @Query("SELECT u FROM Usuario u WHERE u.username = :username")
+    public Usuario getUserByUsername(@Param("username") String username);
 }
