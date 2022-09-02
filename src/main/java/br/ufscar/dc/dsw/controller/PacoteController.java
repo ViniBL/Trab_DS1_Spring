@@ -28,7 +28,7 @@ public class PacoteController {
 	private IPacoteService pacoteService;
 
 	@Autowired
-	private IAgenciaService editoraService;
+	private IAgenciaService agenciaService;
 
 	@GetMapping("/cadastrar")
 	public String cadastrar(Pacote pacote) {
@@ -78,8 +78,8 @@ public class PacoteController {
 		return "redirect:/pacotes/listar";
 	}
 
-	@ModelAttribute("editoras")
+	@ModelAttribute("agencias")
 	public List<Agencia> listaAgencias() {
-		return editoraService.buscarTodos();
+		return agenciaService.buscarTodos();
 	}
 }

@@ -23,7 +23,7 @@ public class LivrariaMvcApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(IUsuarioDAO usuarioDAO, BCryptPasswordEncoder encoder, IAgenciaDAO editoraDAO, IPacoteDAO pacoteDAO) {
+	public CommandLineRunner demo(IUsuarioDAO usuarioDAO, BCryptPasswordEncoder encoder, IAgenciaDAO agenciaDAO, IPacoteDAO pacoteDAO) {
 		return (args) -> {
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -67,19 +67,19 @@ public class LivrariaMvcApplication {
 			e1.setCNPJ("55.789.390/0008-99");
 			e1.setNome("Companhia Aéria");
 			e1.setDescricao("Viagens de avião");
-			editoraDAO.save(e1);
+			agenciaDAO.save(e1);
 			
 			Agencia e2 = new Agencia();
 			e2.setCNPJ("71.150.470/0001-40");
 			e2.setNome("Companhia Ferroviária");
 			e2.setDescricao("Viagens de trem");
-			editoraDAO.save(e2);
+			agenciaDAO.save(e2);
 			
 			Agencia e3 = new Agencia();
 			e3.setCNPJ("32.106.536/0001-82");
 			e3.setNome("Companhia Marítima");
 			e3.setDescricao("Viagens de canoa");
-			editoraDAO.save(e3);
+			agenciaDAO.save(e3);
 			
 			Pacote l1 = new Pacote();
 			l1.setDescricao("Primeira classe");

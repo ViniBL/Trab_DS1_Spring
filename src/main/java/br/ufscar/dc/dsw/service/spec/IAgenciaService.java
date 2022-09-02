@@ -10,9 +10,9 @@ public interface IAgenciaService {
 
 	List<Agencia> buscarTodos();
 
-	void salvar(Agencia editora);
+	void salvar(Agencia agencia);
 
 	void excluir(Long id);
 	
-	boolean editoraTemPacotes(Long id);
+	boolean agenciaTemPacotes(Long id);
 }

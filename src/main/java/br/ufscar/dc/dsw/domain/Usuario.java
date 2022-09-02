@@ -55,7 +55,7 @@ public class Usuario extends AbstractEntity<Long> {
     @Getter @Setter private Date dataNascimento;
 
 
-	//Atributos para editora
+	//Atributos para agencia
 	@UniqueCNPJ (message = "{Unique.usuario.CNPJ}")
 	@Size(min = 18, max = 18, message = "{Size.usuario.CNPJ}")
 	@Column(nullable = true, unique = true, length = 60)

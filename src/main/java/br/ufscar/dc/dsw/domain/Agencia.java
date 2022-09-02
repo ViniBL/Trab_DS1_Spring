@@ -18,9 +18,9 @@ import br.ufscar.dc.dsw.validation.UniqueCNPJ;
 @NoArgsConstructor @AllArgsConstructor 
 public class Agencia extends AbstractEntity<Long> {
 
-	@UniqueCNPJ (message = "{Unique.editora.CNPJ}")
+	@UniqueCNPJ (message = "{Unique.agencia.CNPJ}")
 	@NotBlank
-	@Size(min = 18, max = 18, message = "{Size.editora.CNPJ}")
+	@Size(min = 18, max = 18, message = "{Size.agencia.CNPJ}")
 	@Column(nullable = false, unique = true, length = 60)
 	@Getter @Setter private String CNPJ;
 	

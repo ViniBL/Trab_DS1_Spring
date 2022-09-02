@@ -37,8 +37,8 @@ public class Pacote extends AbstractEntity<Long> {
 	@Getter @Setter private String descricao;
 
 	@ManyToOne
-	@JoinColumn(name = "editora_id")
-	@Getter @Setter private Agencia editora;
+	@JoinColumn(name = "agencia_id")
+	@Getter @Setter private Agencia agencia;
 
 	@NotBlank(message = "{NotBlank.destino.cidade}")
 	@Size(max = 60)
