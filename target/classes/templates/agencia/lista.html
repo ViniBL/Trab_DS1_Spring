@@ -30,16 +30,17 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th th:text="#{agencia.cnpj.label}"></th>
+							<th th:text="#{agencia.CNPJ.label}"></th>
 							<th th:text="#{agencia.nome.label}"></th>
+							<th th:text="#{agencia.descricao.label}"></th>
 							<th th:text="#{acao.label}"></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="agencia : ${agencias}">
-							<td th:text="${agencia.id}"></td>
 							<td th:text="${agencia.CNPJ}"></td>
 							<td th:text="${agencia.nome}"></td>
+							<td th:text="${agencia.descricao}"></td>
 							<td colspan="2">
 								<a class="btn btn-info btn-sm" th:href="@{/agencias/editar/{id} (id=${agencia.id}) }"
 									role="button"> 
