@@ -40,17 +40,17 @@ public class Pacote extends AbstractEntity<Long> {
 	@JoinColumn(name = "agencia_id")
 	@Getter @Setter private Agencia agencia;
 
-	@NotBlank(message = "{NotBlank.destino.cidade}")
+	@NotBlank(message = "{NotBlank.pacote.cidade}")
 	@Size(max = 60)
 	@Column(nullable = false, length = 60)
 	@Getter @Setter private String cidade;
 
-	@NotBlank(message = "{NotBlank.destino.estado}")
+	@NotBlank(message = "{NotBlank.pacote.estado}")
 	@Size(max = 60)
 	@Column(nullable = false, length = 60)
 	@Getter @Setter private String estado;
 
-	@NotBlank(message = "{NotBlank.destino.pais}")
+	@NotBlank(message = "{NotBlank.pacote.pais}")
 	@Size(max = 60)
 	@Column(nullable = false, length = 60)
 	@Getter @Setter private String pais;
