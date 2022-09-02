@@ -1,6 +1,6 @@
 package br.ufscar.dc.dsw.domain;
 
-import java.math.BigDecimal;
+//import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -2,7 +2,6 @@ package br.ufscar.dc.dsw;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.text.SimpleDateFormat;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,10 +17,10 @@ import br.ufscar.dc.dsw.domain.Pacote;
 import br.ufscar.dc.dsw.domain.Usuario;
 
 @SpringBootApplication
-public class LivrariaMvcApplication {
+public class ViaGraViagensGratificantesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LivrariaMvcApplication.class, args);
+		SpringApplication.run(ViaGraViagensGratificantesApplication.class, args);
 	}
 
 	@Bean
@@ -119,4 +118,5 @@ public class LivrariaMvcApplication {
 			pacoteDAO.save(l3);
 		};
 	}
+
 }

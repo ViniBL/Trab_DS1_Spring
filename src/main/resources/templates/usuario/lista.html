@@ -30,7 +30,7 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th th:text="#{usuario.login.label}"></th>
+							<th th:text="#{usuario.username.label}"></th>
 							<th th:text="#{usuario.nome.label}"></th>
 							<th th:text="#{usuario.CPF.label}"></th>
 							<th th:text="#{usuario.telefone.label}"></th>
@@ -43,7 +43,7 @@
 					<tbody>
 						<tr th:each="usuario : ${usuarios}">
 							<td th:text="${usuario.id}"></td>
-							<td th:text="${usuario.login}"></td>
+							<td th:text="${usuario.username}"></td>
 							<td th:text="${usuario.nome}"></td>
 							<td th:text="${usuario.CPF}"></td>
 							<td th:text="${usuario.telefone.label}"></td>
