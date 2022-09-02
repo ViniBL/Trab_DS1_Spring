@@ -9,11 +9,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.*;
+import javax.validation.constraints.NotBlank;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Pacote_adquirido")
-@Check(constraints = "status IN('CANCELADO', 'VIGENTE')")
 @NoArgsConstructor @AllArgsConstructor 
 public class Pacote_adquirido extends AbstractEntity<Long> {
     /*

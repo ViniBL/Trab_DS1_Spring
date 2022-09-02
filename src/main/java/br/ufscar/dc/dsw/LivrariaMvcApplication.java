@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
+import java.text.SimpleDateFormat;
 import br.ufscar.dc.dsw.dao.IAgenciaDAO;
 import br.ufscar.dc.dsw.dao.IPacoteDAO;
 import br.ufscar.dc.dsw.dao.IUsuarioDAO;
@@ -27,7 +27,7 @@ public class LivrariaMvcApplication {
 	public CommandLineRunner demo(IUsuarioDAO usuarioDAO, BCryptPasswordEncoder encoder, IAgenciaDAO agenciaDAO, IPacoteDAO pacoteDAO) {
 		return (args) -> {
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-			Date data = formato.parse(10/02/1999); 
+			Date data = formato.parse("10/02/1999"); 
 			
 			Usuario u1 = new Usuario();
 			u1.setUsername("admin");
@@ -58,7 +58,7 @@ public class LivrariaMvcApplication {
 			u3.setRole("ROLE_AGENCIA");
 			u3.setTelefone("31-99990-9091");
 			u3.setSexo("F");
-			data = formato.parse(17/12/1993); 
+			data = formato.parse("17/12/1993"); 
 			u3.setDataNascimento(data);
 			u3.setEnabled(true);
 			usuarioDAO.save(u3);
@@ -89,7 +89,7 @@ public class LivrariaMvcApplication {
 			l1.setDuracao(2);
 			l1.setValor(BigDecimal.valueOf(1300.9));
 			l1.setAgencia(e1);
-			data = formato.parse(17/12/2022); 
+			data = formato.parse("17/12/2022"); 
 			l1.setData_partida(data);
 			pacoteDAO.save(l1);
 			
@@ -101,7 +101,7 @@ public class LivrariaMvcApplication {
 			l2.setDuracao(6);
 			l2.setValor(BigDecimal.valueOf(45.4));
 			l2.setAgencia(e2);
-			data = formato.parse(17/12/2022); 
+			data = formato.parse("17/12/2022"); 
 			l2.setData_partida(data);
 			pacoteDAO.save(l2);
 			
@@ -113,7 +113,7 @@ public class LivrariaMvcApplication {
 			l3.setDuracao(2);
 			l3.setValor(BigDecimal.valueOf(10.0));
 			l3.setAgencia(e3);
-			data = formato.parse(17/12/2022); 
+			data = formato.parse("7/12/2022"); 
 			l3.setData_partida(data);
 			pacoteDAO.save(l3);
 		};
