@@ -33,7 +33,7 @@ public class LivrariaMvcApplication {
 			u1.setPassword(encoder.encode("admin"));
 			u1.setCPF("012.345.678-90");
 			u1.setNome("Administrador");
-			u1.setRole("ADM");
+			u1.setRole("ROLE_ADMIN");
 			u1.setEnabled(true);
 			usuarioDAO.save(u1);
 			
@@ -42,7 +42,7 @@ public class LivrariaMvcApplication {
 			u2.setPassword(encoder.encode("123"));
 			u2.setCPF("985.849.614-10");
 			u2.setNome("Beltrano Andrade");
-			u2.setRole("USER");
+			u2.setRole("ROLE_USER");
 			u2.setEnabled(true);
 			u2.setTelefone("31-99990-9090");
 			u2.setSexo("M");
@@ -55,7 +55,7 @@ public class LivrariaMvcApplication {
 			u3.setPassword(encoder.encode("123"));
 			u3.setCPF("367.318.380-04");
 			u3.setNome("Fulana Silva");
-			u3.setRole("USER");
+			u3.setRole("ROLE_AGENCIA");
 			u3.setTelefone("31-99990-9091");
 			u3.setSexo("F");
 			Date data = formato.parse(17/12/1993); 
