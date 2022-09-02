@@ -23,12 +23,12 @@ public class Pacote_adquiridoService implements IPacote_adquiridoService {
 	}
 
 	@Transactional(readOnly = true)
-	public Compra buscarPorId(Long id) {
+	public Pacote_adquirido buscarPorId(Long id) {
 		return dao.findById(id.longValue());
 	}
 
 	@Transactional(readOnly = true)
-	public List<Compra> buscarTodosPorUsuario(Usuario u) {
+	public List<Pacote_adquirido> buscarTodosPorUsuario(Usuario u) {
 		return dao.findAllByUsuario(u);
 	}
 }
