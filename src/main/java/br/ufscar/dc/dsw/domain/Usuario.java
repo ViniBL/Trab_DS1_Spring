@@ -32,9 +32,12 @@ public class Usuario extends AbstractEntity<Long> {
     @Column(nullable = false, length = 10)
     @Getter @Setter private String role;
 
+    @Column(nullable = false)
+    @Getter @Setter private boolean enabled;
+
 
     //Atributos para cliente
-	@UniqueCNPJ (message = "{Unique.usuario.CNPJ}")
+	@UniqueCNPJ (message = "{Unique.usuario.CPF}")
     @NotBlank
     @Column(nullable = true, length = 14, unique = true)
     @Getter @Setter private String CPF;
