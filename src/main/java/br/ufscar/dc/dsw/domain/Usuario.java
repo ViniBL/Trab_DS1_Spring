@@ -41,7 +41,7 @@ public class Usuario extends AbstractEntity<Long> {
 
 
     //Atributos para cliente
-	@UniqueCPF (message = "{Unique.usuario.CPF}")
+	//@UniqueCPF (message = "{Unique.usuario.CPF}")
     @NotBlank
     @Column(nullable = true, length = 14, unique = true)
     //@Getter @Setter 
