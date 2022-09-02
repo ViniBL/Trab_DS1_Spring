@@ -6,12 +6,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import lombok.*;
 import java.util.Date;
+import br.ufscar.dc.dsw.validation.UniqueCPF;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Usuario")
-@Check(constraints = "sexo IN('M', 'F', 'N')")
-@Check(constraints = "role IN('ROLE_ADM', 'ROLE_USER', 'AGENCIA')")
 @NoArgsConstructor @AllArgsConstructor 
 public class Usuario extends AbstractEntity<Long> {
   

@@ -17,6 +17,8 @@ public interface IUsuarioDAO extends CrudRepository<Usuario, Long> {
 	
 	Usuario save(Usuario usuario);
 
+	Usuario findByCPF(String CPF);
+
 	void deleteById(Long id);
 	
     @Query("SELECT u FROM Usuario u WHERE u.login = :login")
