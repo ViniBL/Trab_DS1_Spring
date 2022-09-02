@@ -30,9 +30,12 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th th:text="#{usuario.username.label}"></th>
-							<th th:text="#{usuario.name.label}"></th>
+							<th th:text="#{usuario.login.label}"></th>
+							<th th:text="#{usuario.nome.label}"></th>
 							<th th:text="#{usuario.CPF.label}"></th>
+							<th th:text="#{usuario.telefone.label}"></th>
+							<th th:text="#{usuario.sexo.label}"></th>
+							<th th:text="#{usuario.dataNascimento.label}"></th>
 							<th th:text="#{usuario.role.label}"></th>
 							<th th:text="#{acao.label}"></th>
 						</tr>
@@ -40,9 +43,12 @@
 					<tbody>
 						<tr th:each="usuario : ${usuarios}">
 							<td th:text="${usuario.id}"></td>
-							<td th:text="${usuario.username}"></td>
-							<td th:text="${usuario.name}"></td>
+							<td th:text="${usuario.login}"></td>
+							<td th:text="${usuario.nome}"></td>
 							<td th:text="${usuario.CPF}"></td>
+							<td th:text="${usuario.telefone.label}"></td>
+							<td th:text="${usuario.sexo.label}"></td>
+							<td th:text="${usuario.dataNascimento.label}"></td>
 							<td th:text="${usuario.role}"></td>
 							<td colspan="2">
 								<a class="btn btn-info btn-sm" th:href="@{/usuarios/editar/{id} (id=${usuario.id}) }"
