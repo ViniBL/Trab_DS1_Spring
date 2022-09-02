@@ -17,8 +17,8 @@ public class AgenciaService implements IAgenciaService {
 	@Autowired
 	IAgenciaDAO dao;
 	
-	public void salvar(Agencia agencia) {
-		dao.save(agencia);
+	public void salvar(Agencia editora) {
+		dao.save(editora);
 	}
 
 	public void excluir(Long id) {
@@ -36,7 +36,7 @@ public class AgenciaService implements IAgenciaService {
 	}
 	
 	@Transactional(readOnly = true)
-	public boolean agenciaTemPacotes(Long id) {
+	public boolean editoraTemPacotes(Long id) {
 		return !dao.findById(id.longValue()).getPacotes().isEmpty(); 
 	}
 }

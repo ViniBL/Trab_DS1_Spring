@@ -16,62 +16,62 @@ import br.ufscar.dc.dsw.domain.Agencia;
 import br.ufscar.dc.dsw.service.spec.IAgenciaService;
 
 @Controller
-@RequestMapping("/agencias")
+@RequestMapping("/editoras")
 public class AgenciaController {
 	
 	@Autowired
 	private IAgenciaService service;
 	
 	@GetMapping("/cadastrar")
-	public String cadastrar(Agencia agencia) {
-		return "agencia/cadastro";
+	public String cadastrar(Agencia editora) {
+		return "editora/cadastro";
 	}
 	
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
-		model.addAttribute("agencias",service.buscarTodos());
-		return "agencia/lista";
+		model.addAttribute("editoras",service.buscarTodos());
+		return "editora/lista";
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(@Valid Agencia agencia, BindingResult result, RedirectAttributes attr) {
+	public String salvar(@Valid Agencia editora, BindingResult result, RedirectAttributes attr) {
 		
 		if (result.hasErrors()) {
-			return "agencia/cadastro";
+			return "editora/cadastro";
 		}
 		
-		service.salvar(agencia);
-		attr.addFlashAttribute("sucess", "agencia.create.sucess");
-		return "redirect:/agencias/listar";
+		service.salvar(editora);
+		attr.addFlashAttribute("sucess", "editora.create.sucess");
+		return "redirect:/editoras/listar";
 	}
 	
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Long id, ModelMap model) {
-		model.addAttribute("agencia", service.buscarPorId(id));
-		return "agencia/cadastro";
+		model.addAttribute("editora", service.buscarPorId(id));
+		return "editora/cadastro";
 	}
 	
 	@PostMapping("/editar")
-	public String editar(@Valid Agencia agencia, BindingResult result, RedirectAttributes attr) {
+	public String editar(@Valid Agencia editora, BindingResult result, RedirectAttributes attr) {
 		
 		// Apenas rejeita se o problema não for com o CNPJ (CNPJ campo read-only) 
 		
 		if (result.getFieldErrorCount() > 1 || result.getFieldError("CNPJ") == null) {
-			return "agencia/cadastro";
+			return "editora/cadastro";
 		}
 
-		service.salvar(agencia);
-		attr.addFlashAttribute("sucess", "agencia.edit.sucess");
-		return "redirect:/agencias/listar";
+		service.salvar(editora);
+		attr.addFlashAttribute("sucess", "editora.edit.sucess");
+		return "redirect:/editoras/listar";
 	}
 	
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, ModelMap model) {
-		if (service.agenciaTemPacotes(id)) {
-			model.addAttribute("fail", "agencia.delete.fail");
+		if (service.editoraTemPacotes(id)) {
+			model.addAttribute("fail", "editora.delete.fail");
 		} else {
 			service.excluir(id);
-			model.addAttribute("sucess", "agencia.delete.sucess");
+			model.addAttribute("sucess", "editora.delete.sucess");
 		}
 		return listar(model);
 	}

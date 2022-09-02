@@ -23,12 +23,14 @@ public class LivrariaMvcApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(IUsuarioDAO usuarioDAO, BCryptPasswordEncoder encoder, IAgenciaDAO agenciaDAO, IPacoteDAO pacoteDAO) {
+	public CommandLineRunner demo(IUsuarioDAO usuarioDAO, BCryptPasswordEncoder encoder, IAgenciaDAO editoraDAO, IPacoteDAO pacoteDAO) {
 		return (args) -> {
+			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+
 			
 			Usuario u1 = new Usuario();
 			u1.setLogin("admin");
-			u1.setSenha(encoder.encode("admin"));
+			u1.setPassword.encode("admin");
 			u1.setCPF("012.345.678-90");
 			u1.setNome("Administrador");
 			u1.setRole("ADM");
@@ -37,27 +39,25 @@ public class LivrariaMvcApplication {
 			
 			Usuario u2 = new Usuario();
 			u2.setLogin("beltrano");
-			u2.setSenha(encoder.encode("123"));
+			u2.setPassword(encoder.encode("123"));
 			u2.setCPF("985.849.614-10");
 			u2.setNome("Beltrano Andrade");
 			u2.setRole("USER");
 			u2.setEnabled(true);
 			u2.setTelefone("31-99990-9090");
 			u2.setSexo("M");
-			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 			Date data = formato.parse(10/02/1999); 
 			u2.setDataNascimento(data);
 			usuarioDAO.save(u2);
 			
 			Usuario u3 = new Usuario();
 			u3.setLogin("fulana");
-			u3.setSenha(encoder.encode("123"));
+			u3.setPassword(encoder.encode("123"));
 			u3.setCPF("367.318.380-04");
 			u3.setNome("Fulana Silva");
 			u3.setRole("USER");
 			u3.setTelefone("31-99990-9091");
 			u3.setSexo("F");
-			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 			Date data = formato.parse(17/12/1993); 
 			u3.setDataNascimento(data);
 			u3.setEnabled(true);
@@ -67,19 +67,19 @@ public class LivrariaMvcApplication {
 			e1.setCNPJ("55.789.390/0008-99");
 			e1.setNome("Companhia Aéria");
 			e1.setDescricao("Viagens de avião");
-			agenciaDAO.save(e1);
+			editoraDAO.save(e1);
 			
 			Agencia e2 = new Agencia();
 			e2.setCNPJ("71.150.470/0001-40");
 			e2.setNome("Companhia Ferroviária");
 			e2.setDescricao("Viagens de trem");
-			agenciaDAO.save(e2);
+			editoraDAO.save(e2);
 			
 			Agencia e3 = new Agencia();
 			e3.setCNPJ("32.106.536/0001-82");
 			e3.setNome("Companhia Marítima");
 			e3.setDescricao("Viagens de canoa");
-			agenciaDAO.save(e3);
+			editoraDAO.save(e3);
 			
 			Pacote l1 = new Pacote();
 			l1.setDescricao("Primeira classe");
@@ -89,7 +89,6 @@ public class LivrariaMvcApplication {
 			l1.setDuracao(2);
 			l1.setValor(BigDecimal.valueOf(1300.9));
 			l1.setAgencia(e1);
-			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 			Date data = formato.parse(17/12/2022); 
 			l1.setData_partida(data);
 			pacoteDAO.save(l1);
@@ -102,7 +101,6 @@ public class LivrariaMvcApplication {
 			l2.setDuracao(6);
 			l2.setValor(BigDecimal.valueOf(45.4));
 			l2.setAgencia(e2);
-			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 			Date data = formato.parse(17/12/2022); 
 			l2.setData_partida(data);
 			pacoteDAO.save(l2);
@@ -115,7 +113,6 @@ public class LivrariaMvcApplication {
 			l3.setDuracao(2);
 			l3.setValor(BigDecimal.valueOf(10.0));
 			l3.setAgencia(e3);
-			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 			Date data = formato.parse(17/12/2022); 
 			l3.setData_partida(data);
 			pacoteDAO.save(l3);

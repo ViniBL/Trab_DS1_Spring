@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufscar.dc.dsw.domain.Pacote_adquirido;
-import br.ufscar.dc.dsw.domain.Livro;
+import br.ufscar.dc.dsw.domain.Pacote;
 import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.security.UsuarioDetails;
-import br.ufscar.dc.dsw.service.spec.ICompraService;
+import br.ufscar.dc.dsw.service.spec.IPacote_adquiridoService;
 import br.ufscar.dc.dsw.service.spec.IPacoteService;
 
 @Controller
@@ -54,7 +54,7 @@ public class Pacote_adquiridoController {
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(@Valid Compra compra, BindingResult result, RedirectAttributes attr) {
+	public String salvar(@Valid Pacote_adquirido compra, BindingResult result, RedirectAttributes attr) {
 		
 		if (result.hasErrors()) {
 			return "compra/cadastro";

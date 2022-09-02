@@ -18,11 +18,11 @@ public class Usuario extends AbstractEntity<Long> {
 	//Atributos comuns a todos os usuarios
 	@NotBlank
     @Column(nullable = false, length = 20, unique = true)
-    @Getter @Setter private String login;
+    @Getter @Setter private String username;
     
 	@NotBlank
     @Column(nullable = false, length = 64)
-    @Getter @Setter private String senha;
+    @Getter @Setter private String password;
        
     @NotBlank
     @Column(nullable = false, length = 60)
@@ -37,7 +37,7 @@ public class Usuario extends AbstractEntity<Long> {
 
 
     //Atributos para cliente
-	@UniqueCNPJ (message = "{Unique.usuario.CPF}")
+	@UniqueCPF (message = "{Unique.usuario.CPF}")
     @NotBlank
     @Column(nullable = true, length = 14, unique = true)
     @Getter @Setter private String CPF;
@@ -55,7 +55,7 @@ public class Usuario extends AbstractEntity<Long> {
     @Getter @Setter private Date dataNascimento;
 
 
-	//Atributos para agencia
+	//Atributos para editora
 	@UniqueCNPJ (message = "{Unique.usuario.CNPJ}")
 	@Size(min = 18, max = 18, message = "{Size.usuario.CNPJ}")
 	@Column(nullable = true, unique = true, length = 60)
