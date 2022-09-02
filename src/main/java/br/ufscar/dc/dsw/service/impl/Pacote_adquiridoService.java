@@ -6,19 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.ufscar.dc.dsw.dao.ICompraDAO;
-import br.ufscar.dc.dsw.domain.Compra;
+import br.ufscar.dc.dsw.dao.IPacote_adquiridoDAO;
+import br.ufscar.dc.dsw.domain.Pacote_adquirido;
 import br.ufscar.dc.dsw.domain.Usuario;
-import br.ufscar.dc.dsw.service.spec.ICompraService;
+import br.ufscar.dc.dsw.service.spec.IPacote_adquiridoService;
 
 @Service
 @Transactional(readOnly = false)
-public class CompraService implements ICompraService {
+public class Pacote_adquiridoService implements IPacote_adquiridoService {
 
 	@Autowired
-	ICompraDAO dao;
+	IPacote_adquiridoDAO dao;
 	
-	public void salvar(Compra compra) {
+	public void salvar(Pacote_adquirido compra) {
 		dao.save(compra);
 	}
 

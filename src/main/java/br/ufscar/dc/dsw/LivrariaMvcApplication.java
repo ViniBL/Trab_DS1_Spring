@@ -8,11 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import br.ufscar.dc.dsw.dao.IEditoraDAO;
-import br.ufscar.dc.dsw.dao.ILivroDAO;
+import br.ufscar.dc.dsw.dao.IAgenciaDAO;
+import br.ufscar.dc.dsw.dao.IPacoteDAO;
 import br.ufscar.dc.dsw.dao.IUsuarioDAO;
-import br.ufscar.dc.dsw.domain.Editora;
-import br.ufscar.dc.dsw.domain.Livro;
+import br.ufscar.dc.dsw.domain.Agencia;
+import br.ufscar.dc.dsw.domain.Pacote;
 import br.ufscar.dc.dsw.domain.Usuario;
 
 @SpringBootApplication
@@ -23,74 +23,102 @@ public class LivrariaMvcApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(IUsuarioDAO usuarioDAO, BCryptPasswordEncoder encoder, IEditoraDAO editoraDAO, ILivroDAO livroDAO) {
+	public CommandLineRunner demo(IUsuarioDAO usuarioDAO, BCryptPasswordEncoder encoder, IAgenciaDAO agenciaDAO, IPacoteDAO pacoteDAO) {
 		return (args) -> {
 			
 			Usuario u1 = new Usuario();
-			u1.setUsername("admin");
-			u1.setPassword(encoder.encode("admin"));
+			u1.setLogin("admin");
+			u1.setSenha(encoder.encode("admin"));
 			u1.setCPF("012.345.678-90");
-			u1.setName("Administrador");
-			u1.setRole("ROLE_ADMIN");
+			u1.setNome("Administrador");
+			u1.setRole("ADM");
 			u1.setEnabled(true);
 			usuarioDAO.save(u1);
 			
 			Usuario u2 = new Usuario();
-			u2.setUsername("beltrano");
-			u2.setPassword(encoder.encode("123"));
+			u2.setLogin("beltrano");
+			u2.setSenha(encoder.encode("123"));
 			u2.setCPF("985.849.614-10");
-			u2.setName("Beltrano Andrade");
-			u2.setRole("ROLE_USER");
+			u2.setNome("Beltrano Andrade");
+			u2.setRole("USER");
 			u2.setEnabled(true);
+			u2.setTelefone("31-99990-9090");
+			u2.setSexo("M");
+			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+			Date data = formato.parse(10/02/1999); 
+			u2.setDataNascimento(data);
 			usuarioDAO.save(u2);
 			
 			Usuario u3 = new Usuario();
-			u3.setUsername("fulano");
-			u3.setPassword(encoder.encode("123"));
+			u3.setLogin("fulana");
+			u3.setSenha(encoder.encode("123"));
 			u3.setCPF("367.318.380-04");
-			u3.setName("Fulano Silva");
-			u3.setRole("ROLE_USER");
+			u3.setNome("Fulana Silva");
+			u3.setRole("USER");
+			u3.setTelefone("31-99990-9091");
+			u3.setSexo("F");
+			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+			Date data = formato.parse(17/12/1993); 
+			u3.setDataNascimento(data);
 			u3.setEnabled(true);
 			usuarioDAO.save(u3);
 			
-			Editora e1 = new Editora();
+			Agencia e1 = new Agencia();
 			e1.setCNPJ("55.789.390/0008-99");
-			e1.setNome("Companhia das Letras");
-			editoraDAO.save(e1);
+			e1.setNome("Companhia Aéria");
+			e1.setDescricao("Viagens de avião");
+			agenciaDAO.save(e1);
 			
-			Editora e2 = new Editora();
+			Agencia e2 = new Agencia();
 			e2.setCNPJ("71.150.470/0001-40");
-			e2.setNome("Record");
-			editoraDAO.save(e2);
+			e2.setNome("Companhia Ferroviária");
+			e2.setDescricao("Viagens de trem");
+			agenciaDAO.save(e2);
 			
-			Editora e3 = new Editora();
+			Agencia e3 = new Agencia();
 			e3.setCNPJ("32.106.536/0001-82");
-			e3.setNome("Objetiva");
-			editoraDAO.save(e3);
+			e3.setNome("Companhia Marítima");
+			e3.setDescricao("Viagens de canoa");
+			agenciaDAO.save(e3);
 			
-			Livro l1 = new Livro();
-			l1.setTitulo("Ensaio sobre a Cegueira");
-			l1.setAutor("José Saramago");
-			l1.setAno(1995);
-			l1.setPreco(BigDecimal.valueOf(54.9));
-			l1.setEditora(e1);
-			livroDAO.save(l1);
+			Pacote l1 = new Pacote();
+			l1.setDescricao("Primeira classe");
+			l1.setCidade("Florianópolis");
+			l1.setEstado("SC");
+			l1.setPais("Brasil");
+			l1.setDuracao(2);
+			l1.setValor(BigDecimal.valueOf(1300.9));
+			l1.setAgencia(e1);
+			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+			Date data = formato.parse(17/12/2022); 
+			l1.setData_partida(data);
+			pacoteDAO.save(l1);
 			
-			Livro l2 = new Livro();
-			l2.setTitulo("Cem anos de Solidão");
-			l2.setAutor("Gabriel Garcia Márquez");
-			l2.setAno(1977);
-			l2.setPreco(BigDecimal.valueOf(59.9));
-			l2.setEditora(e2);
-			livroDAO.save(l2);
+			Pacote l2 = new Pacote();
+			l2.setDescricao("Maria Fumaça");
+			l2.setCidade("Ouro Preto");
+			l2.setEstado("MG");
+			l2.setPais("Brasil");
+			l2.setDuracao(6);
+			l2.setValor(BigDecimal.valueOf(45.4));
+			l2.setAgencia(e2);
+			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+			Date data = formato.parse(17/12/2022); 
+			l2.setData_partida(data);
+			pacoteDAO.save(l2);
 			
-			Livro l3 = new Livro();
-			l3.setTitulo("Diálogos Impossíveis");
-			l3.setAutor("Luis Fernando Verissimo");
-			l3.setAno(2012);
-			l3.setPreco(BigDecimal.valueOf(22.9));
-			l3.setEditora(e3);
-			livroDAO.save(l3);
+			Pacote l3 = new Pacote();
+			l3.setDescricao("Vai ter que remar");
+			l3.setCidade("Japiim");
+			l3.setEstado("AM");
+			l3.setPais("Brasil");
+			l3.setDuracao(2);
+			l3.setValor(BigDecimal.valueOf(10.0));
+			l3.setAgencia(e3);
+			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+			Date data = formato.parse(17/12/2022); 
+			l3.setData_partida(data);
+			pacoteDAO.save(l3);
 		};
 	}
 }
