@@ -34,7 +34,7 @@ public class Agencia extends AbstractEntity<Long> {
 	@Column(nullable = false, unique = false, length = 256)
 	@Getter @Setter private String descricao;
 
-	@OneToMany(mappedBy = "pacote")
+	@OneToMany(mappedBy = "agencia")
 	private List<Pacote> pacotes;
 
 }
