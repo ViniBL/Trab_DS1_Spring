@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 @Table(name = "Usuario")
 @Check(constraints = "sexo IN('M', 'F', 'N')")
-@Check(constraints = "role IN('ADM', 'USER', 'AGENCIA')")
+@Check(constraints = "role IN('ROLE_ADM', 'ROLE_USER', 'AGENCIA')")
 @NoArgsConstructor @AllArgsConstructor 
 public class Usuario extends AbstractEntity<Long> {
   
