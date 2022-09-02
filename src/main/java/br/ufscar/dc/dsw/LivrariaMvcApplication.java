@@ -29,8 +29,8 @@ public class LivrariaMvcApplication {
 
 			
 			Usuario u1 = new Usuario();
-			u1.setLogin("admin");
-			u1.setPassword.encode("admin");
+			u1.setUsername("admin");
+			u1.setPassword(encoder.encode("admin"));
 			u1.setCPF("012.345.678-90");
 			u1.setNome("Administrador");
 			u1.setRole("ADM");
@@ -38,7 +38,7 @@ public class LivrariaMvcApplication {
 			usuarioDAO.save(u1);
 			
 			Usuario u2 = new Usuario();
-			u2.setLogin("beltrano");
+			u2.setUsername("beltrano");
 			u2.setPassword(encoder.encode("123"));
 			u2.setCPF("985.849.614-10");
 			u2.setNome("Beltrano Andrade");
@@ -51,7 +51,7 @@ public class LivrariaMvcApplication {
 			usuarioDAO.save(u2);
 			
 			Usuario u3 = new Usuario();
-			u3.setLogin("fulana");
+			u3.setUsername("fulana");
 			u3.setPassword(encoder.encode("123"));
 			u3.setCPF("367.318.380-04");
 			u3.setNome("Fulana Silva");
